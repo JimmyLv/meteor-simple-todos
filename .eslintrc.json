@@ -10,6 +10,9 @@
       2,
       "never"
     ],
-    "eol-last": 0
+    "eol-last": 0,
+    "import/no-unresolved": [
+      2, { "ignore": ["^meteor/"] }
+    ]
   }
 }

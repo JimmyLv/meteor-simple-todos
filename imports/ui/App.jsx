@@ -1,20 +1,16 @@
 import React, {
-  Component
+  Component,
+  PropTypes
 } from 'react'
+import { createContainer } from 'meteor/react-meteor-data'
+
+import Tasks from '../api/tasks'
 
 import Task from './Task'
 
 class App extends Component {
-  getTask() {
-    return [
-      { id: 1, text: 'This is task 1' },
-      { id: 2, text: 'This is task 2' },
-      { id: 3, text: 'This is task 3' }
-    ]
-  }
-
   renderTask() {
-    return this.getTask().map(task => (
+    return this.props.tasks.map(task => (
       <Task key={task.id} task={task} />
     ))
   }
@@ -33,7 +29,11 @@ class App extends Component {
   }
 }
 
-App.propTypes = {}
+App.propTypes = {
+  tasks: PropTypes.array.isRequired
+}
 App.defaultProps = {}
 
-export default App
+export default createContainer(() => ({
+  tasks: Tasks.find({}).fetch()
+}), App)
