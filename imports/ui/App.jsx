@@ -4,7 +4,7 @@ import React, {
 } from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 
-import { Tasks } from '../api/tasks'
+import Tasks from '../api/tasks'
 
 import Task from './Task'
 
