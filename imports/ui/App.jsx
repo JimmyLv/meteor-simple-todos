@@ -24,13 +24,7 @@ class App extends Component {
     e.preventDefault()
 
     const text = this.refs.textInput.value.trim()
-
-    Tasks.insert({
-      text,
-      createdAt: new Date(),
-      owner: Meteor.userId(),
-      username: Meteor.user().username || Meteor.user().profile.name
-    })
+    Meteor.call('tasks.insert', text)
 
     this.refs.textInput.value = ''
   }
