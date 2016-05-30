@@ -29,7 +29,7 @@ class App extends Component {
       text,
       createdAt: new Date(),
       owner: Meteor.userId(),
-      username: Meteor.user().profile.name
+      username: Meteor.user().username || Meteor.user().profile.name
     })
 
     this.refs.textInput.value = ''
